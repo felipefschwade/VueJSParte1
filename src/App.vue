@@ -1,20 +1,27 @@
 
 <template>
+
   <div class="corpo">
     <h1 class="centralizado">{{ titulo }}</h1>
     <ul class="lista-fotos">
       <li v-for="foto of fotos" class="lista-fotos-item">
-      <meu-painel :titulo="foto.titulo">
-        <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
-      </meu-painel>
-      </div>
+        <meu-painel :titulo="foto.titulo">
+          <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
+        </meu-painel>
       </li>
     </ul>
   </div>
+  
 </template>
 
 <script>
+import Painel from './components/shared/painel-component/Painel.vue';
+
 export default {
+
+components: {
+  'meu-painel' : Painel
+},
 
  data() {
     return {
