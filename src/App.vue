@@ -6,12 +6,12 @@
     <ul class="lista-fotos">
       <li v-for="foto of fotos" class="lista-fotos-item">
         <meu-painel :titulo="foto.titulo">
-          <img class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
+          <img slot="imagem" class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
         </meu-painel>
       </li>
     </ul>
   </div>
-  
+
 </template>
 
 <script>
@@ -39,7 +39,7 @@ components: {
 }
 </script>
 
-<style>
+<style scoped>
   .centralizado {
     text-align: center;
   }
