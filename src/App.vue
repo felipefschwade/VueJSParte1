@@ -3,8 +3,9 @@
 
   <div class="corpo">
     <h1 class="centralizado">{{ titulo }}</h1>
+    <input type="search" v-on:input="filtro=$event.target.value" class="input-busca" />
     <ul class="lista-fotos">
-      <li v-for="foto of fotos" class="lista-fotos-item">
+      <li v-for="foto of fotosComFiltro" class="lista-fotos-item">
         <meu-painel :titulo="foto.titulo">
           <img slot="imagem" class="imagem-responsiva" :src="foto.url" :alt="foto.titulo">
         </meu-painel>
@@ -26,7 +27,8 @@ components: {
  data() {
     return {
       titulo: 'Alurapic',
-      fotos: [] 
+      fotos: [],
+      filtro: ""
     }
  },
 
@@ -34,6 +36,17 @@ components: {
    this.$http.get("http://localhost:3000/v1/fotos")
       .then(res => res.json())
       .then(fotos => this.fotos = fotos, err => console.log(err));
+ },
+
+ computed : {
+   fotosComFiltro() {
+     if (this.filtro)
+     {
+       return this.fotos.filter(foto => foto.titulo.toLowerCase().includes(this.filtro.toLowerCase()));
+     } else {
+       return this.fotos;
+     }
+   }
  }
 
 }
@@ -58,6 +71,12 @@ components: {
 
   .imagem-responsiva {
     width: 90%;
+  }
+  .input-busca {
+    width: 100%;
+    border-radius: 5px;
+    font-size: 12;
+    height: 2.5em;
   }
 
 </style>

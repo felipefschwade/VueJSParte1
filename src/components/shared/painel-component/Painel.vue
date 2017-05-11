@@ -1,6 +1,6 @@
 
 <template>
-
+        
         <div class="painel">
             <h2 class="painel-titulo">{{ titulo }}</h2>
             <slot name="imagem" class="painel-conteudo">
