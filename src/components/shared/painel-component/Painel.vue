@@ -3,9 +3,11 @@
 
         <div class="painel">
             <h2 class="painel-titulo" @dblclick="visivel = !visivel">{{ titulo }}</h2>
-            <div class="painel-conteudo" v-show="visivel">
+            <transition  name="painel-fade">
+              <div class="painel-conteudo" v-show="visivel">
                <slot name="imagem" ></slot>
-            </div>
+              </div>
+            </transition >
         </div>
 
 </template>
@@ -48,4 +50,15 @@ export default {
     box-shadow : 5px 5px 5px;
   }
 
+  .painel-fade-enter-active {
+    transition: all .6s ease;
+  }
+  .painel-fade-leave-active {
+    transition: all .6s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+  }
+  .painel-fade-enter, .painel-fade-leave-to
+  /* .slide-fade-leave-active for <2.1.8 */ {
+    transform: translateY(-20px);
+    opacity: 0;
+}
 </style>
