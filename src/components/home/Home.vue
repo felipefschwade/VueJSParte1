@@ -16,8 +16,8 @@
 </template>
 
 <script>
-import Painel from './components/shared/painel-component/Painel.vue';
-import ImagemResponsiva from './components/shared/imagem-responsiva/ImagemResponsiva.vue';
+import Painel from '../shared/painel-component/Painel.vue';
+import ImagemResponsiva from '../shared/imagem-responsiva/ImagemResponsiva.vue';
 
 export default {
 
@@ -58,7 +58,7 @@ components: {
   .centralizado {
     text-align: center;
   }
-  
+
   .lista-fotos {
     list-style: none;
   }
