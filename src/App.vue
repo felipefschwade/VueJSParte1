@@ -1,18 +1,16 @@
 <template>
   <div class="corpo">
-    <nav>
-      <ul>
-        <li v-for="rota of routes">
-          <router-link :to="rota.path ? rota.path : '/'">{{ rota.text }}</router-link>
-        </li>
-      </ul>
-    </nav>
-    <router-view></router-view>
+    <meu-painel :rotas="routes"></meu-painel>
+    <transition name="pagina">
+      <router-view></router-view>
+    </transition>
   </div>
 </template>
 <script>
   import { routes } from './routes';
+  import Navegacao from './components/shared/navegacao/Navegacao.vue'
   export default {
+    components: { 'meu-painel' : Navegacao },
       data() {
         return {
           routes
@@ -25,5 +23,11 @@
     font-family: Helvetica, Sans-serif;
     margin: 0, auto;
     width: 96%;
+  }
+  pagina-enter-active, .pagina-leave-active {
+    transition: opacity .3s
+  }
+  .pagina-enter, .pagina-leave-active {
+    opacity: 0
   }
 </style>
