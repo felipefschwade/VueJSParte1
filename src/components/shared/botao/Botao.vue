@@ -1,10 +1,18 @@
 <template>
-    <button class="botao botao-perigo" :type="tipo">{{ rotulo }}</button>
+    <button @click="BotaoAtivado()" class="botao botao-perigo" :type="tipo">{{ rotulo }}</button>
 </template>
 
 <script>
     export default {
         props : ['tipo', 'rotulo'],
+
+        methods : {
+            BotaoAtivado() {
+                if(confirm("Confirma remoção?")) {
+                    this.$emit("botaoAtivado", new Date());
+                }
+            }
+        }
     }
 </script>
 
