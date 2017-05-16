@@ -5,7 +5,8 @@
             <h2 class="painel-titulo" @dblclick="visivel = !visivel">{{ titulo }}</h2>
             <transition  name="painel-fade">
               <div class="painel-conteudo" v-show="visivel">
-               <slot name="imagem" ></slot>
+               <slot name="imagem"></slot>
+               <slot name="botao"></slot>
               </div>
             </transition >
         </div>
