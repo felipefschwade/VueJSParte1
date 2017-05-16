@@ -8,7 +8,13 @@
       <li v-for="foto of fotosComFiltro" class="lista-fotos-item">
         <meu-painel :titulo="foto.titulo">
           <imagem-responsiva slot="imagem" :url="foto.url" :titulo="foto.titulo"/>
-          <meu-botao slot="botao" tipo="button" @botaoAtivado="remover($event, foto)" rotulo="Remover"/>
+          <meu-botao 
+            slot="botao" 
+            tipo="button" 
+            @botaoAtivado="remover($event, foto)" 
+            rotulo="Remover"
+            :confirmacao="true"
+            estilo="perigo"/>
         </meu-painel>
       </li>
     </ul>
